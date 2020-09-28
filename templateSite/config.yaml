@@ -119,6 +119,8 @@ params:
     image: "/images/logo.png" 
     # option to specify the width of the image in the homepage
     imageWidth: 500px
+    # header text for posts on index page
+    posts_title: Popular Posts
 
   # footer options
   footer:
