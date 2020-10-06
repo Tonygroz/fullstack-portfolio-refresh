@@ -21,7 +21,7 @@
       {{- $pagesEachPage := 2 -}}
                   <div class="columns">
                     
-          {{ $pages := union (where $.Site.RegularPages "Section" "projects") (where $.Site.RegularPages "Section" "blog") }}
+          {{ $pages := union (where $.Site.RegularPages "Type" "badge") (where $.Site.RegularPages "Section" "blog") }}
           {{ $pages := first 4 $pages.ByWeight}}
            
                             
