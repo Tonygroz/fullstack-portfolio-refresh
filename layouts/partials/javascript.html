@@ -11,6 +11,7 @@
 
 {{- $js10 := resources.Get "js/highlight.9.18.1.js" -}}
 {{- $js11 := resources.Get "js/highlightjs-line-numbers.2.7.0.min.js" -}}
+{{- $js12 := resources.Get "js/lightbox.js" -}}
 
 {{- if .Site.Params.jsMinify -}}
     {{- $js1 = $js1 | resources.Minify -}}
@@ -25,6 +26,7 @@
     {{- $js9 = $js9 | resources.Minify -}}
     {{- $js10 = $js10 | resources.Minify -}}
     {{- $js11 = $js11 | resources.Minify -}}
+    {{- $js12 = $js12 | resources.Minify -}}
 {{- end -}}
 
 {{- if .Site.Params.jsIntegrity -}}
@@ -41,6 +43,7 @@
 
   {{- $js10 = $js10 | resources.Fingerprint -}}
   {{- $js11 = $js11 | resources.Fingerprint -}}
+  {{- $js12 = $js12 | resources.Fingerprint -}}
 {{- end -}}
 
 {{- if .Site.Params.jsIntegrity -}}
@@ -76,10 +79,12 @@
   <script src="{{- $js9.Permalink | relURL -}}" integrity="{{- $js9.Data.Integrity -}}"></script>
   <script src="{{- $js10.Permalink | relURL -}}" integrity="{{- $js10.Data.Integrity -}}"></script>
   <script src="{{- $js11.Permalink | relURL -}}" integrity="{{- $js11.Data.Integrity -}}"></script>
+  <script src="{{- $js12.Permalink | relURL -}}" integrity="{{- $js12.Data.Integrity -}}"></script>
 {{- else -}}
   <script src="{{- $js9.Permalink | relURL -}}"></script>
   <script src="{{- $js10.Permalink | relURL -}}"></script>
   <script src="{{- $js11.Permalink | relURL -}}"></script>
+  <script src="{{- $js12.Permalink | relURL -}}"></script>
 {{- end -}}
 
 <script>
