@@ -19,43 +19,53 @@
 
 				{{/* This is to create list of Section pages */}}
 
-{{$scratch := newScratch}}
+					{{$scratch := newScratch}}
 
 
-{{ $mysec := slice }}  
-     
-       
-{{- if .Sections -}}
-{{- range .Sections -}}
-{{- range $i, $e := where .Data.Pages "Params.series" "featuredSection" -}}
-  
-  {{/*
-    {{$i}} -- {{$e}}
-   {{$mysec}} 
-   yoooooo
-  {{.Type}}
-  {{.Title}}
+					{{ $featuredSections := slice }}  
+					     
+					       
+					{{- if .Sections -}}
+					{{- range .Sections -}}
+					{{- range $i, $e := where .Data.Pages "Params.series" "featuredSection" -}}
+					  
+					  {{/*
+					    {{$i}} -- {{$e}}
+					   {{$featuredSections}} 
+					   yoooooo
+					  {{.Type}}
+					  {{.Title}}
 
-  */}}
-  
-  
-  {{ $mysec := $scratch.Get "mysec"}}
-  {{- $mysec := $mysec | append $e -}}
-   {{ $scratch.Set "mysec" $mysec}}
-  
+					  */}}
+					  
+					  
+					  {{ $featuredSections := $scratch.Get "featuredSections"}}
+					  {{- $featuredSections := $featuredSections | append $e -}}
+					   {{ $scratch.Set "featuredSections" $featuredSections}}
+					  
 
+					{{- end -}}
+					{{- end -}}
+					{{- end -}}
+
+
+					{{ $featuredSections := $scratch.Get "featuredSections"}}
+
+					{{/*{{ $featuredSections}}*/}}
+
+ {{ $pages := slice }} 
+{{- if eq .Site.Params.homepage.useFeaturedSeries true -}}
+	{{ $pages = union (where .Site.Pages "Params.series" "featured") ($featuredSections) }} 
+{{- else -}}
+	{{ $pages = union ($.Site.RegularPages ) ($featuredSections) }} 
 {{- end -}}
-{{- end -}}
-{{- end -}}
+
+          
+{{/*{{ $pages :=  $.Site.RegularPages }}
+{{ $pages := union ($.Site.RegularPages ) ($featuredSections) }} 
 
 
-{{ $mysec := $scratch.Get "mysec"}}
-
-{{/*{{ $mysec}}*/}}
-
- 
-          {{ $pages := union (where .Site.Pages "Params.series" "featured") ($mysec) }} 
-
+*/}}
 
 
 
