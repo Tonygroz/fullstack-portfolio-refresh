@@ -20,82 +20,8 @@
                     
       {{- $pagesEachPage := 2 -}}
                   <div class="columns">
-     
-
-{{$scratch := newScratch}}
-
-
-{{ $mysec := slice }}  
-     
-       
-{{- if .Sections -}}
-{{- range .Sections -}}
-{{- range $i, $e := .Data.Pages -}}
-  
-  {{/*
-    {{$i}} -- {{$e}}
-   {{$mysec}} 
-   yoooooo
-  {{.Type}}
-  {{.Title}}
-
-  */}}
-  {{ if eq .Type "sectionleads" }}
-  
-  {{ $mysec := $scratch.Get "mysec"}}
-  {{- $mysec := $mysec | append $e -}}
-   {{ $scratch.Set "mysec" $mysec}}
-  {{- end -}}
-
-{{- end -}}
-{{- end -}}
-{{- end -}}
-
-
-{{ $mysec := $scratch.Get "mysec"}}
-
-{{/*{{ $mysec}}*/}}
-
-{{/*
-{{ $v1 := where $.Paginator.Pages ".Params.tags" "intersect" (slice "homepage")}}
-here
-{{ range $v1 }}
-  {{.Title}}
-{{ end }}
-*/}}
-yo
-
-{{ $holler := $.Site.Taxonomies.tags.homepage }}
-here
-{{ range $holler }}
-  {{.Title}}
-  {{.Weight}}
-{{ end }}
-
-
-{{/*
-          {{$mypages := $mysec}}
-          {{ $pages := union (where .Paginator.Pages ".Params.tags" "intersect" (slice "homepage")) ($mysec) }} 
-*/}}
-
-
- {{$mypages := $mysec}}
-          {{ $pages := union (where .Site.Pages "Params.series" "testing") ($mysec) }} 
-
-
-
-{{ range $pages }}
-  {{.Title}}
-  {{.Weight}}
-{{ end }}
-
-
-{{ $holler := where .Site.Pages "Params.series" "testing"}}
-{{ range $holler }}
-  {{.Title}}
-  {{.Weight}}
-{{ end }}
-
+                    
+          {{ $pages := union (where $.Site.RegularPages "Section" "badges") (where $.Site.RegularPages "Section" "blog") }}
           {{ $pages := first 4 $pages.ByWeight}}
            
                             
@@ -115,6 +41,16 @@ here
                   </div>
                 </div>
               </div>
+
+
+
+
+
+
+
+              
+
+
 
               
               </div>
