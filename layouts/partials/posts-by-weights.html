@@ -1,10 +1,4 @@
-
-
-
-
-
-
-    <section class="section is-small">
+<section class="section is-small">
         <div class="container">
           <div class="columns">
             <div class="column">
@@ -18,9 +12,12 @@
                 {{- $pagesEachPage := 2 -}}
                   <div class="columns">
                     
-      {{- $pagesEachPage := 2 -}}
+      			  {{- $pagesEachPage := 2 -}}
                   <div class="columns">
      
+
+
+				{{/* This is to create list of Section pages */}}
 
 {{$scratch := newScratch}}
 
@@ -30,7 +27,7 @@
        
 {{- if .Sections -}}
 {{- range .Sections -}}
-{{- range $i, $e := .Data.Pages -}}
+{{- range $i, $e := where .Data.Pages "Params.series" "featuredSection" -}}
   
   {{/*
     {{$i}} -- {{$e}}
@@ -40,12 +37,12 @@
   {{.Title}}
 
   */}}
-  {{ if eq .Type "sectionleads" }}
+  
   
   {{ $mysec := $scratch.Get "mysec"}}
   {{- $mysec := $mysec | append $e -}}
    {{ $scratch.Set "mysec" $mysec}}
-  {{- end -}}
+  
 
 {{- end -}}
 {{- end -}}
@@ -56,45 +53,12 @@
 
 {{/*{{ $mysec}}*/}}
 
-{{/*
-{{ $v1 := where $.Paginator.Pages ".Params.tags" "intersect" (slice "homepage")}}
-here
-{{ range $v1 }}
-  {{.Title}}
-{{ end }}
-*/}}
-yo
-
-{{ $holler := $.Site.Taxonomies.tags.homepage }}
-here
-{{ range $holler }}
-  {{.Title}}
-  {{.Weight}}
-{{ end }}
-
-
-{{/*
-          {{$mypages := $mysec}}
-          {{ $pages := union (where .Paginator.Pages ".Params.tags" "intersect" (slice "homepage")) ($mysec) }} 
-*/}}
-
-
- {{$mypages := $mysec}}
-          {{ $pages := union (where .Site.Pages "Params.series" "testing") ($mysec) }} 
+ 
+          {{ $pages := union (where .Site.Pages "Params.series" "featured") ($mysec) }} 
 
 
 
-{{ range $pages }}
-  {{.Title}}
-  {{.Weight}}
-{{ end }}
 
-
-{{ $holler := where .Site.Pages "Params.series" "testing"}}
-{{ range $holler }}
-  {{.Title}}
-  {{.Weight}}
-{{ end }}
 
           {{ $pages := first 4 $pages.ByWeight}}
            
