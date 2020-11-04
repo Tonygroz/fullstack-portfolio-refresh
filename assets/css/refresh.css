@@ -160,6 +160,16 @@ div.scroll::-webkit-scrollbar { width: 0px; }
 
 #c2 {  flex-direction: column; }
 
+
+ul li{
+ font-size:1.25em;
+}
+
+
+li{
+ font-size:1.25em;
+}
+
 /* end */
 
 /* .refresh-book{
