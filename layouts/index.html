@@ -50,10 +50,16 @@
      
            <section class="section">
     <div class="container">
-         <h3 class="subtitle is-10 is-bold is-spaced" align="left" >
-        {{- .Site.Params.homepage.bio -}}
- 
-        </h3>
+       
+
+    
+        {{ with $.Site.GetPage "frontpage_bio.md" }} <section class="section content has-text-justified">
+          <!-- <div class="content"> -->
+            {{- .Content -}}
+          <!-- </div> -->
+        </section>{{ end }}
+        
+
            {{- partial "posts-by-weights.html" . -}}
 </div>
 </section>
