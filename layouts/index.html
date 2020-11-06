@@ -1,77 +1,52 @@
 {{- define "main" -}}
+  
+  {{- partial "navbar.html" . -}}
+  {{- partial "navbar-clone.html" . -}}
+  {{- $homepage   := .Site.Params.homepage -}}
 
-    
-        
-        {{- partial "navbar.html" . -}}
-        {{- partial "navbar-clone.html" . -}}
+  {{- $title      := index $homepage "title" -}}
+  {{- $subtitle   := index $homepage "subtitle" -}}
+  {{- $image      := index $homepage "image" -}}
 
-        {{- $homepage   := .Site.Params.homepage -}}
+  <div class="container is-medium">
+    <div class="columns is-multiline">
+      
 
-                {{- $title      := index $homepage "title" -}}
-                {{- $subtitle   := index $homepage "subtitle" -}}
-                {{- $image      := index $homepage "image" -}}
-
-
-   <div class="container is-medium">
-       <div class="columns is-multiline">
-            
-          
-          <div class="column is-quarter" align="center">    
-                      <figure class="image"> 
+      <div class="column is-quarter" align="center">    
+        <figure class="image"> 
               {{- $img := resources.Get $image -}}
-             <img src="{{- $img.Permalink | relURL -}}" 
+          <img src="{{- $img.Permalink | relURL -}}" 
                              style="width:{{- .Site.Params.homepage.imageWidth -}}" alt="Myself" align="center">
-            </figure>
-                     <div>&nbsp</div>
+        </figure>
+        <div>&nbsp</div>
                      
-           <h1 class="title is-3 is-bold is-spaced" align="center" >{{- $title -}}</h1>
- <h3 align="center">
-             <h2 class="subtitle is-5 is-muted" align="center">
-
-              {{ $bulletpoints :=.Site.Params.homepage.bulletpoints}}
-
-            
-
-               {{- range $index, $element := $bulletpoints -}}
-                  {{ $element}} 
-                  <p>
-               {{- end -}}
-           
-                
-              
-           </h3>
-
-          
-             <h2 class="subtitle is-5 is-muted" align="center"></h2>
-                   
-            </div>
-
-        <div class="column is-three-quarters">
-     
-           <section class="section">
-    <div class="container">
-       
-
+        <h1 class="title is-3 is-bold is-spaced" align="center" >{{- $title -}}</h1>
+        <h2 class="subtitle is-5 is-muted" align="center">
     
-        {{ with $.Site.GetPage "frontpage_bio.md" }} <section class="section content has-text-justified">
-          <!-- <div class="content"> -->
-            {{- .Content -}}
-          <!-- </div> -->
-        </section>{{ end }}
-        
-
-           {{- partial "posts-by-weights.html" . -}}
-</div>
-</section>
-     
-
-
-
-
-        </div>
+          {{ $bulletpoints :=.Site.Params.homepage.bulletpoints}}
+            
+            {{- range $index, $element := $bulletpoints -}}
+              {{ $element}} 
+              <p>
+            {{- end -}}
       </div>
-</div>
-</div>
+
+    <div class="column is-three-quarters">
+        <div class="container">
+          {{ with $.Site.GetPage "frontpage_bio.md" }} <section class="section content has-text-left">
+            <!-- <div class="content"> -->
+              {{- .Content -}}
+           <!-- </div> -->
+      </section>
+      {{ end }}
+      {{- partial "posts-by-weights.html" . -}}
+    </div>
+
+  </div>
+  
+  </div>
+  </div>
+
 
 
     {{- partial "footer.html" . -}}
