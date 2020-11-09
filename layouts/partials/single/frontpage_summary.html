@@ -1,5 +1,5 @@
 {{- $numberOfDefaultImages := 4 -}}
-  <div class="column is-6 is-flex">
+  <div class="column is-half is-flex">
      <div  class="box is-flex" style=" width: 100%;
     height: 100%;
     display: flex;                      /* new */
@@ -43,7 +43,7 @@
         {{- end -}}
       </p> 
        <div id="c2" class="btn-holder">
-        <a href="{{- .Permalink | relURL -}}" class="button is-primary">
+        <a href="{{- .Permalink | relURL -}}" class="button is-link">
                 Read More
             </a>
       </div>
