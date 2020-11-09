@@ -2,8 +2,9 @@
 
 **Fullstack Portfolio** is a theme for the [Hugo](https://gohugo.io) static site generator
 
-it is a modified version of an awesome/accesible theme [ReFresh](https://github.com/PippoRJ/hugo-refresh) by Roberto Jordaney. 
-_highly_ modified from the awesome [Fresh](https://github.com/StefMa/hugo-fresh) theme (below you can find the list of changes to the original theme). 
+**Credits/Origin**:
+* it is a modified version of an awesome/accesible theme [ReFresh](https://github.com/PippoRJ/hugo-refresh) by Roberto Jordaney, which is based on: 
+* _highly_ modified from the awesome [Fresh](https://github.com/StefMa/hugo-fresh) theme (below you can find the list of changes to the original theme). 
 
 You can find a live demo of the original Fresh theme [here](https://themes.gohugo.io/theme/hugo-fresh/) or a demo of the Hugo ReFresh theme [here](https://themes.gohugo.io/theme/hugo-refresh/).
 
