@@ -4,9 +4,9 @@
 <div class="columns is-left container">
 {{- end -}}
     {{- if or (eq (.Get "line-numbers") "false") (eq (.Get "line-numbers") false) -}}
-    <div class="column is-two-thirds nonumbers">
+    <div class="column is-11 nonumbers">
     {{- else -}}
-    <div class="column is-two-thirds">
+    <div class="column is-11">
     {{- end -}}
     {{- if .Get "language" -}}
     <pre><code class="code-highlight language-{{- .Get "language" -}}">{{- trim .Inner "\n" -}}</code></pre>
