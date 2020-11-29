@@ -22,30 +22,24 @@
                         <!-- </div> -->
                       </section>
 
-    {{ range .Paginator.Pages }}
-              
-                  <div>
-                    {{ partial "single/summary.html" . }}
-                  </div>
-              </li>
-          {{ end }}
+
 
 
 
                      
-              <div class="section is-small">
-                <div class="container">
-
-                {{- $pagesEachPage := 3 -}}
-                  <div class="columns">
-                    {{- range $index, $element := .Pages.ByWeight -}}
-                        {{- if eq (mod $index $pagesEachPage) 0 -}}
-                          </div>
+                      <div class="section is-small">
+                        <div class="container">
+        
+                        {{- $pagesEachPage := 3 -}}
                           <div class="columns">
-                        {{- end -}}
-                    
-                       {{.Render "summary"}}
-                    {{- end -}}
+                            {{- range $index, $element := .Pages.ByWeight -}}
+                                {{- if eq (mod $index $pagesEachPage) 0 -}}
+                                  </div>
+                                  <div class="columns">
+                                {{- end -}}
+                           
+                                {{ partial "single/summary.html" . }}
+                            {{- end -}}
                   </div>
                 </div>
               </div>
