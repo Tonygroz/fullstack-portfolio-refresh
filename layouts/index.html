@@ -12,7 +12,7 @@
     <div class="columns is-multiline">
       
 
-      <div class="column is-quarter" align="center">    
+      <div class="column is-quarter is-hidden-mobile" align="center">    
         <figure class="image"> 
               {{- $img := resources.Get $image -}}
           <img src="{{- $img.Permalink | relURL -}}" 
